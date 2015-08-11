@@ -19,5 +19,56 @@
         </ul>
       </div>
     </nav>
+
+    <div class="valign-wrapper" style="height:100px;">
+      <h5 class="valign center" style="width:100%;">Dosen X</h5>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s6"><a href="#form1">Input Dosen Baru</a></li>
+            <li class="tab col s6"><a href="#form2">Input Data</a></li>
+          </ul>
+        </div>
+
+        <div id="form1" class="col s12">
+          <form>
+            <div class="input-field col s6">
+              <input id="first_name" type="text" class="validate">
+              <label for="first_name">Nama Depan</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate">
+              <label for="last_name">Nama Belakang</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="nip" type="tel">
+              <label for="nip">NIP</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </form>
+        </div>
+
+        <div id="form2" class="col s12">
+          <div class="input-field col s9">
+            <select class="browser-default">
+              <option value="" disabled selected>Pilih jenis data</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </select>
+          </div>
+          <div class="valign-wrapper col s3" style="height:70px;">
+            <a class="btn-floating btn-small waves-effect waves-light valign center red"><i class="material-icons">add</i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </body>
 </html>
