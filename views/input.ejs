@@ -56,18 +56,35 @@
 
         <div id="form2" class="col s12">
           <div class="input-field col s9">
-            <select class="browser-default">
+            <select>
               <option value="" disabled selected>Pilih jenis data</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+              <% for(var i=0; i<data.length; i++) {%>
+                <% if(data[i].name.substr(0,1) != "O") {%>
+                  <option value="<%= i %>"><%= data[i].name %></option>
+                <% } %>
+              <% } %>
             </select>
           </div>
           <div class="valign-wrapper col s3" style="height:70px;">
-            <a class="btn-floating btn-small waves-effect waves-light valign center red"><i class="material-icons">add</i></a>
+            <a class="btn-floating btn-small waves-effect waves-light valign center red modal-trigger" href="#add-class-modal">
+              <i class="material-icons">add</i>
+            </a>
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <div id="add-class-modal" class="modal bottom-sheet">
+      <div class="modal-content">
+        <h4>Tambah kelas baru</h4>
+        <div class="input-field col s12">
+          <input id="new-class" type="tel">
+          <label for="new-class">Nama kelas baru</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Tambah</a>
       </div>
     </div>
   </body>

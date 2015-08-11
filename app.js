@@ -11,6 +11,23 @@ var reportRoute = require('./routes/report');
 
 var app = express();
 
+// orientjs
+var OrientDB = require('orientjs');
+
+var server = OrientDB({
+  host: 'localhost',
+  port: 2424,
+  username: 'admin',
+  password: 'admin'
+});
+
+var db = server.use({
+  name: 'sidosen',
+  username: 'admin',
+  password: 'admin'
+});
+console.log('Using database: ' + db.name);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -22,6 +39,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Make our db accessible to our router
+app.use(function(req, res, next){
+  req.db = db;
+  next();
+});
 
 app.use('/', routes);
 app.use('/input', inputRoute);
