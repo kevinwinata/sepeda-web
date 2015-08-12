@@ -6,6 +6,7 @@
     <link rel='stylesheet' href='/css/materialize.css' />
     <script src="/js/jquery-1.11.3.min.js"></script>
     <script src="/js/materialize.js"></script>
+    <script type="text/javascript">var local_data = <%- JSON.stringify(data) %>;</script>
   	<script src="/js/input.js"></script>
   </head>
   <body>
@@ -28,12 +29,31 @@
       <div class="row">
         <div class="col s12">
           <ul class="tabs">
-            <li class="tab col s6"><a href="#form1">Input Dosen Baru</a></li>
-            <li class="tab col s6"><a href="#form2">Input Data</a></li>
+            <li class="tab col s6"><a href="#form1">Input Data</a></li>
+            <li class="tab col s6"><a href="#form2">Input Dosen Baru</a></li>
           </ul>
         </div>
 
         <div id="form1" class="col s12">
+          <div class="input-field col s9">
+            <select id="class-select">
+              <option value="" disabled selected>Pilih jenis data</option>
+              <% for(var i=0; i<data.length; i++) {%>
+                <% if(data[i].name.substr(0,1) != "O") {%>
+                  <option value="<%= i %>"><%= data[i].name %></option>
+                <% } %>
+              <% } %>
+            </select>
+            <div id="form-class" class="col s12"></div>
+          </div>
+          <div class="valign-wrapper col s3" style="height:70px;">
+            <a class="btn-floating btn-small waves-effect waves-light valign center red modal-trigger" href="#add-class-modal">
+              <i class="material-icons">add</i>
+            </a>
+          </div>
+        </div>
+
+        <div id="form2" class="col s12">
           <form>
             <div class="input-field col s6">
               <input id="first_name" type="text" class="validate">
@@ -52,24 +72,6 @@
               <label for="email">Email</label>
             </div>
           </form>
-        </div>
-
-        <div id="form2" class="col s12">
-          <div class="input-field col s9">
-            <select>
-              <option value="" disabled selected>Pilih jenis data</option>
-              <% for(var i=0; i<data.length; i++) {%>
-                <% if(data[i].name.substr(0,1) != "O") {%>
-                  <option value="<%= i %>"><%= data[i].name %></option>
-                <% } %>
-              <% } %>
-            </select>
-          </div>
-          <div class="valign-wrapper col s3" style="height:70px;">
-            <a class="btn-floating btn-small waves-effect waves-light valign center red modal-trigger" href="#add-class-modal">
-              <i class="material-icons">add</i>
-            </a>
-          </div>
         </div>
 
       </div>
